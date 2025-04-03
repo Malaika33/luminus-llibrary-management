@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q & A - Library Management System</title>
+    <link rel="stylesheet" href="style/qna.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Luminus Library Management</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="available_books.html">Available Books</a></li>
+                    <li class="nav-item"><a class="nav-link" href="issued_books.html">Issued Books</a></li>
+                    <li class="nav-item"><a class="nav-link" href="overdue_books.html">Overdue Books</a></li>
+                    <li class="nav-item"><a class="nav-link" href="fine_payment.html">Fine Payment</a></li>
+                    <li class="nav-item"><a class="nav-link" href="qna.html">Q & A</a></li>
+                    <li class="nav-item"><a class="nav-link" href="logout.html">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="text-center text-light">Q & A Section</h2>
+        <p class="text-center text-light">Ask questions and get answers about the library system.</p>
+        
+        <div class="question-container fade-in">
+            <h4>Ask a Question</h4>
+            <form id="questionForm">
+                <div class="mb-3">
+                    <label for="question" class="form-label">Your Question:</label>
+                    <textarea id="question" class="form-control" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-submit">Submit</button>
+            </form>
+        </div>
+
+        <h4 class="mt-4 text-light">Recent Questions</h4>
+        <div id="questionsList"></div>
+    </div>
+
+    <script>
+        document.getElementById('questionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let questionText = document.getElementById('question').value;
+            if (questionText.trim() !== '') {
+                let questionDiv = document.createElement('div');
+                questionDiv.classList.add('question-container', 'fade-in');
+                questionDiv.innerHTML = `<strong>Question:</strong> ${questionText} <p class='text-muted'>Answer will be provided soon.</p>`;
+                document.getElementById('questionsList').prepend(questionDiv);
+                document.getElementById('question').value = '';
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

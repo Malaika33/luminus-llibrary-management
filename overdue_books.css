@@ -1,0 +1,39 @@
+body {
+    background: url('/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+.navbar {
+    background: rgba(0, 0, 0, 0.7);
+}
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+.container {
+    margin-top: 50px;
+}
+.table-container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 1s ease-in-out;
+}
+h2 {
+    color: #d9534f !important;
+    font-weight: bold;
+}
+.table thead {
+    background: #d9534f;
+    color: white;
+}
+.table tbody tr:hover {
+    background: #fce4ec;
+}
+.fine-text {
+    font-weight: bold;
+    color: #c9302c;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

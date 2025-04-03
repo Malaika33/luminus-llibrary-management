@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issued Books - Library Management</title>
+    <link rel="stylesheet" href="style/issued_books.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Luminus Library Management</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="available_books.html">Available Books</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="issued_books.html">Issued Books</a></li>
+                    <li class="nav-item"><a class="nav-link" href="overdue_books.html">Overdue Books</a></li>
+                    <li class="nav-item"><a class="nav-link" href="fine_payment.html">Fine Payment</a></li>
+                    <li class="nav-item"><a class="nav-link" href="qna.html">Q & A</a></li>
+                    <li class="nav-item"><a class="nav-link" href="logout.html">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="issued-container">
+        <h2>Issued Books</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered mt-4">
+                <thead>
+                    <tr>
+                        <th>Book Title</th>
+                        <th>Issue Date</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="issuedBooksTable">
+                    <!-- Issued books will be dynamically loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const issuedBooks = [
+                { title: "JavaScript Basics", issueDate: "2024-03-10", dueDate: "2024-04-10", status: "On Time" },
+                { title: "CSS Mastery", issueDate: "2024-03-12", dueDate: "2024-04-12", status: "Overdue" },
+                { title: "Bootstrap Essentials", issueDate: "2024-03-15", dueDate: "2024-04-15", status: "On Time" }
+            ];
+
+            const tableBody = document.getElementById("issuedBooksTable");
+            issuedBooks.forEach(book => {
+                const statusClass = book.status === "Overdue" ? "status-overdue" : "status-ontime";
+                const row = `<tr>
+                                <td>${book.title}</td>
+                                <td>${book.issueDate}</td>
+                                <td>${book.dueDate}</td>
+                                <td class="${statusClass}">${book.status}</td>
+                            </tr>`;
+                tableBody.innerHTML += row;
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
